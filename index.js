@@ -1,5 +1,6 @@
 import http from "http";
 import {percentage} from "./module_demo.js";
+import fs from "fs";
 
 // console.log(pi());
 
@@ -9,9 +10,14 @@ const server = http.createServer((req, res) => {
         
     res.end(`<h1> Your chances of dying is ${percentage()}</h2>`);
 
+
     }
     else{
-        res.end("<h1> Empty page</h2>");
+
+        fs.readFile("./index.html", (err,data) => {
+            res.end(data);
+         })
+      
     }
 
 
@@ -19,5 +25,5 @@ const server = http.createServer((req, res) => {
 
 
 server.listen(5000, () => {
-    console.log("server is working");
+    console.log("server is working ");
 })
