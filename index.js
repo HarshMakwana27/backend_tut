@@ -1,29 +1,9 @@
-import http from "http";
-import {percentage} from "./module_demo.js";
-import fs from "fs";
+import express from 'express';
 
-// console.log(pi());
+const server = express();
 
-const server = http.createServer((req, res) => {
+server.get()
 
-    if(req.url === "/about"){
-        
-    res.end(`<h1> Your chances of dying is ${percentage()}</h2>`);
-
-
-    }
-    else{
-
-        fs.readFile("./index.html", (err,data) => {
-            res.end(data);
-         })
-      
-    }
-
-
-});
-
-
-server.listen(5000, () => {
-    console.log("server is working ");
-})
+server.listen(5000,() => {
+    console.log("Server is working");
+} )
